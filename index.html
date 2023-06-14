@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <title>个人主页</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+        }
+
+        /* 第一页 */
+        .firstpg {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            background-color: #000000;
+        }
+
+        .firstpg video {
+            width: 100%;
+            position: fixed;
+            /* height: 100vh; */
+            /* object-fit:fill; */
+        }
+
+        .search {
+            top: 50%;
+            position: absolute;
+            width: 500px;
+            height: 100px;
+            margin-top: 20px;
+            display: flex;
+        }
+
+        /* 搜索框 */
+        .searchbox {
+            position: relative;
+            width: 500px;
+            height: 30px;
+            border: 0;
+            padding: 10px;
+            display: flex;
+            border-radius: 15px;
+            justify-content: center;
+            align-items: center;
+            /* 渐变色 */
+            background: linear-gradient(to right bottom, rgba(255, 255, 255, .7), rgba(255, 255, 255, .5), rgba(255, 255, 255, .4));
+            /* 使背景模糊化 */
+            backdrop-filter: blur(10px);
+            /* 添加阴影 x,y,模糊半径*/
+            box-shadow: 0 0 20px #a29bfe;
+            font-size: 16px;
+            font-weight: 900;
+        }
+
+        .time {
+            top: 27%;
+            position: absolute;
+            color: rgb(255, 255, 255);
+            /* 字体间距 */
+            letter-spacing: 10px;
+            font-size: 60px;
+            font-weight: 700;
+            /* 字体阴影 x,y,模糊半径 */
+            text-shadow: 3px 3px 5px #ed81f9;
+        }
+
+        .time p {
+            float: left;
+        }
+
+        .go {
+            width: 35px;
+            height: 35px;
+            position: absolute;
+            right: 7px;
+            top: 7px;
+            text-align: center;
+            display: block;
+            border-radius: 10px;
+            border: 0;
+            color: #fff;
+            letter-spacing: 3px;
+            background: linear-gradient(to left, #fd79a8, #a29bfe);
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: 0px;
+        }
+
+        ul {
+            transition: .5s .5s;
+            top: 0px;
+            width: 90%;
+            padding: 0;
+            border-radius: 10px;
+            list-style-type: none;
+            overflow: hidden;
+            position: fixed;
+            z-index: 999;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+            background-color: rgba(255, 255, 255, 0);
+            /* 模糊 */
+            backdrop-filter: blur(8px);
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            font-size: 17px;
+            display: block;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 14px 25px;
+            text-decoration: none;
+        }
+
+        li:first-child a {
+            margin-right: 40vh;
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .mainpg {
+            display: flex;
+            width: 100%;
+            height: auto;
+            top: 100vh;
+            background: rgba(255, 255, 255, 0.37);
+            position: relative;
+            justify-content: center;
+        }
+
+        .mainbox {
+            transform: translate(-12%, 0%);
+            top: 0;
+            width: auto;
+            height: auto;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            /* background-color: #988f8f; */
+        }
+
+        .title {
+            width: 760px;
+            height: 90px;
+            margin: 0px;
+            padding: 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content {
+            width: 800px;
+            height: auto;
+            margin: 10px 0;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            /* background-color: #95fdfd; */
+        }
+
+        .gallery {
+            width: 800px;
+            height: auto;
+            position: relative;
+            display: flex;
+            margin: 0 20px;
+            float: left;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gallery img {
+            width: 218px;
+            height: 155px;
+            margin: 10px 20px;
+            border-radius: 10px;
+        }
+
+        .post {
+            width: 800px;
+            height: 300px;
+            border-radius: 15px;
+            margin: 15px 0px;
+            /* padding: 20px; */
+            position: relative;
+            display: flex;
+            /* justify-content: center;
+            align-items: center; */
+            background-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 1px 20px -6px rgb(0 0 0 / 50%);
+        }
+
+        .post h3 {
+            position: absolute;
+            top: 19%;
+            left: 7%;
+            color: #000000;
+        }
+
+        .post p {
+            position: absolute;
+            top: 42%;
+            left: 6%;
+            width: 35%;
+            color: #000000;
+        }
+
+        .post img {
+            width: 55%;
+            border-radius: 15px;
+            position: absolute;
+            display: block;
+            top: 0;
+            right: 0;
+            height: 300px;
+        }
+
+        .introcard {
+            z-index: 500;
+            top: 8%;
+            width: 255px;
+            height: 350px;
+            transform: translate(-62%, 8%);
+            border-radius: 10px;
+            padding: 0px;
+            position: sticky;
+            /* display: flex;
+            flex-direction: column;
+            align-items: center; */
+            background-color: rgba(150, 225, 255, 0.8);
+            text-align: center;
+        }
+
+        .introcard h3 {
+            top: 10%;
+            margin-top: 10px;
+            position: relative;
+            color: #000;
+        }
+
+        .introcard p {
+            top: 10%;
+            margin-top: 10px;
+            position: relative;
+            color: #000;
+        }
+
+        .introcard img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            /* position: absolute;
+            top: 10%; */
+        }
+
+        .introcard .btnbox {
+            top: 80%;
+            width: 100%;
+            margin-top: 10px;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            /* background-color: #000; */
+        }
+
+        .introcard a {
+            margin: 10px 15px;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+        }
+
+        .btnbox a img {
+            width: 100px;
+            height: 100px;
+            top: 0%;
+            left: 100%;
+            border-radius: 2px;
+            position: absolute;
+            border: none;
+            color: white;
+            display: none;
+        }
+
+        .btnbox a:hover img {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="firstpg">
+        <ul>
+            <li><a href="#">yu的个人主页</a></li>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">分类</a></li>
+            <li><a href="#">支持</a></li>
+            <li><a href="#">关于</a></li>
+            <li><a href="#">登录</a></li>
+        </ul>
+        <video src="https://download.mcloud.139.com/storageWeb/servlet/downloadServlet?code=S0IxMjExZjdLU00wNlgwODkxN3R3QmhJdzBT&un=51F2F9FD01877598DDFB9D8C6F7D55C7BBE524EBD00E1E4C600F3CF9DBF7AD27&dom=D961&rate=0&txType=0" loop autoplay muted></video> <!-- 循环自动静音播放 -->
+        <div class="time">
+            <p id="h"></p> <!-- 时 -->
+            <p>:</p>
+            <p id="m"></p> <!-- 分 -->
+            <p>:</p>
+            <p id="s"></p> <!-- 秒 -->
+        </div>
+        <form class="search" autocomplete="off" action="https://www.baidu.com/s">
+            <input class="searchbox" type="text" name="wd" placeholder="搜索">
+            <input class="go" type="submit" value="Go">
+        </form>
+
+    </div>
+
+    <div class="mainpg">
+        <div class="introcard">
+            <p> <img src="https://download.mcloud.139.com/storageWeb/servlet/downloadServlet?code=S0IxMjExZjdLU00wNlgyMDYxN3R3QmhKQ1Zq&un=0C5785EAF622717840024F40618A6DCBF658632683CB373E714E4DF81066E39C&dom=D961&rate=0&txType=0"></p>
+            <h3>yu</h3>
+            <p>DGUT</p>
+            <p>计算机学院</p>
+            <p>工业软件</p>
+            <div class="btnbox">
+                <a href="#"><img src="https://download.mcloud.139.com/storageWeb/servlet/downloadServlet?code=S0IxMjExZjdLU00wNlgwODkxN3R3QmhRbFY4&un=1A80DED44F101FD18FC2DD553DB88398B3BC4A119469678963A14695E21E0B60&dom=D961&rate=0&txType=0"><i class="fab fa-github" aria-hidden="true"></i></a>
+                <a href="#"><img src="https://download.mcloud.139.com/storageWeb/servlet/downloadServlet?code=S0IxMjExZjdLU00wNlgwODkxN3R3QmhRbFY4&un=1A80DED44F101FD18FC2DD553DB88398B3BC4A119469678963A14695E21E0B60&dom=D961&rate=0&txType=0"><i class="fab fa-bilibili" aria-hidden="true"></i></a>
+                <a href="#"><img src="https://download.mcloud.139.com/storageWeb/servlet/downloadServlet?code=S0IxMjExZjdLU00wNlgwODkxN3R3QmhRbFY4&un=1A80DED44F101FD18FC2DD553DB88398B3BC4A119469678963A14695E21E0B60&dom=D961&rate=0&txType=0"><i class="fab fa-weixin" aria-hidden="true"></i></a>
+                <a href="#"><img src="https://download.mcloud.139.com/storageWeb/servlet/downloadServlet?code=S0IxMjExZjdLU00wNlgwODkxN3R3QmhRbFY4&un=1A80DED44F101FD18FC2DD553DB88398B3BC4A119469678963A14695E21E0B60&dom=D961&rate=0&txType=0"><i class="fab fa-weibo " aria-hidden="true"></i></a>
+            </div>
+
+
+        </div>
+        <div class="mainbox">
+            <div class="title">
+                <h1>Welcome</h1>
+                <h3>欢迎来到我的blog</h3>
+            </div>
+            <div class="title">
+                <h2>照片墙</h2>
+            </div>
+            <div class="gallery">
+                <img src="https://download.mcloud.139.com/storageWeb/servlet/downloadServlet?code=SzcxMjExZjdLU00wNlgwODExN3R3QmhRdG1m&un=C6F590D98123C490DD757D09A4DD3ABDCAA5BFEEF955E8B71436C3D991BD5D5B&dom=D960&rate=0&txType=0">
+                <img src="https://download.mcloud.139.com/storageWeb/servlet/downloadServlet?code=S0IxMjExZjdLU00wNlgyMjAxN3R3QmhReHcz&un=87B4F9CC8F7BDBBFBE7613BB4B55230D185905A70B7A53B7D2C02744838D5D00&dom=D961&rate=0&txType=0">
+                <img src="https://download.mcloud.139.com/storageWeb/servlet/downloadServlet?code=S0IxMjExZjdLU00wNlgyMjgxN3R3QmhSOHdW&un=BE5B30C30CC8AD1FB308DDB7ED18834D135BD94725BC1D540E6D62A16519160F&dom=D961&rate=0&txType=0">
+            </div>
+            <div class="title">
+                <h2>Discover</h2>
+            </div>
+            <div class="content">
+                <a href="#" class="post">
+                    <h3>linux常用命令</h3>
+                    <p>本篇文章主要介绍了linux中常用的命令。</p>
+                    <img src="https://download.mcloud.139.com/storageWeb/servlet/downloadServlet?code=S0ExMjExZjdLU00wNlgyMzIxN3R3QmhSQ25p&un=12AE20575EE504D1404E60FD0F7A0C817645B9441F2B649D2ACD46A702393D2E&dom=D961&rate=0&txType=0">
+                </a>
+                <a href="#" class="post">
+                    <h3>ChatGPT</h3>
+                    <p>本篇文章主要介绍了如何使用ChatGpt。</p>
+                    <img src="https://download.mcloud.139.com/storageWeb/servlet/downloadServlet?code=S0IxMjExZjdLU00wNlgwODcxN3R3QmhSRnNR&un=C06979165C95AB5308F47D7E2B6AA15EFC6D772EE4D5CC1581F3A463B68DDFFC&dom=D961&rate=0&txType=0">
+                </a>
+                <a href="#" class="post">
+                    <h3>Linux进程管理</h3>
+                    <p>本篇文章主要介绍了Linux系统调用函数创建进程.</p>
+                    <img src="https://download.mcloud.139.com/storageWeb/servlet/downloadServlet?code=S0ExMjExZjdLU00wNlgwODMxN3R3QmhSSWg4&un=02E8F4BB537B34775C2FE6930A8623742492F164B1B8780D9EE8F0D9DE4D5CEA&dom=D961&rate=0&txType=0">
+                </a>
+            </div>
+            <div class="title">
+            </div>
+            <div class="content">
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+<script>
+    setInterval(function () {
+        var nowtime = new Date();
+        var h = nowtime.getHours();//得到小时数
+        var m = nowtime.getMinutes();//得到分钟数
+        var s = nowtime.getSeconds();//得到秒数
+        // 判断是否小于10,是则在前添加0 
+        h = h < 10 ? '0' + h : h;
+        m = m < 10 ? '0' + m : m;
+        s = s < 10 ? '0' + s : s;
+        document.getElementById('h').innerHTML = h;
+        document.getElementById('m').innerHTML = m;
+        document.getElementById('s').innerHTML = s;
+    }, 1000);
+
+    //添加滚动事件监听器
+    window.addEventListener('scroll', function () {
+        var ul = document.querySelector('ul');
+        if (window.scrollY >= 200) {
+            ul.style.background = 'rgba(255,255,255,0.2)';// 修改透明度
+            ul.style.top = '12px';
+        } else {
+            ul.style.background = ''; // 恢复默认透明度
+            ul.style.top = '';
+        }
+    });
+
+</script>
+
+</html>
