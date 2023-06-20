@@ -1,0 +1,323 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+/* 第一页 */
+.firstpg {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: #000000;
+}
+
+.firstpg video {
+    width: 100%;
+    position: fixed;
+    /* height: 100vh; */
+    /* object-fit:fill; */
+}
+
+.search {
+    top: 50%;
+    position: absolute;
+    width: 500px;
+    height: 100px;
+    margin-top: 20px;
+    display: flex;
+}
+
+/* 搜索框 */
+.searchbox {
+    position: relative;
+    width: 500px;
+    height: 30px;
+    border: 0;
+    padding: 10px;
+    display: flex;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    /* 使背景模糊化 */
+    backdrop-filter: blur(8px);
+    /* 添加阴影 x,y,模糊半径*/
+    box-shadow: 0 0 20px #a29bfe;
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.go {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    text-align: center;
+    display: block;
+    border-radius: 10px;
+    border: 0;
+    color: #fff;
+    letter-spacing: 3px;
+    background: linear-gradient(to left, #fd79a8, #a29bfe);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0px;
+}
+
+.time {
+    top: 27%;
+    position: absolute;
+    color: rgb(255, 255, 255);
+    /* 字体间距 */
+    letter-spacing: 10px;
+    font-size: 60px;
+    font-weight: 700;
+    /* 字体阴影 x,y,模糊半径 */
+    text-shadow: 3px 3px 5px #ed81f9;
+}
+
+.time p {
+    float: left;
+}
+
+/* 右下按钮 */
+.firstpg button {
+    position: absolute;
+    top: 89%;
+    left: 91%;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    color: rgba(150, 225, 255, 0.5);
+    padding: 1px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 50px;
+    transition-duration: 0.4s;
+}
+
+.firstpg button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: rgba(150, 225, 255, 1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+ul {
+    transition: .5s .5s;
+    top: 0px;
+    width: 90%;
+    padding: 0;
+    border-radius: 10px;
+    list-style-type: none;
+    overflow: hidden;
+    position: fixed;
+    z-index: 999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0);
+    /* 模糊 */
+    backdrop-filter: blur(8px);
+}
+
+li {
+    float: left;
+}
+
+li a {
+    font-size: 17px;
+    display: block;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 14px 25px;
+    text-decoration: none;
+}
+
+li:first-child a {
+    margin-right: 40vh;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.mainpg {
+    display: flex;
+    width: 100%;
+    height: auto;
+    top: 100vh;
+    background: rgba(255, 255, 255, 0.37);
+    position: relative;
+    justify-content: center;
+}
+
+.mainbox {
+    transform: translate(-12%, 0%);
+    top: 0;
+    width: auto;
+    height: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: #988f8f; */
+}
+
+/* 标题样式 */
+.title {
+    width: 760px;
+    height: 90px;
+    margin: 0px;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 内容样式 */
+.content {
+    width: 800px;
+    height: auto;
+    margin: 10px 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: #95fdfd; */
+}
+
+/* 照片墙 */
+.gallery {
+    width: 800px;
+    height: auto;
+    position: relative;
+    display: flex;
+    margin: 0 20px;
+    float: left;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery img {
+    width: 230px;
+    height: 155px;
+    margin: 10px 20px;
+    border-radius: 10px;
+}
+
+/* 文章 */
+.post {
+    width: 800px;
+    height: 300px;
+    border-radius: 15px;
+    margin: 15px 0px;
+    /* padding: 20px; */
+    position: relative;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 1px 20px -6px rgb(0 0 0 / 50%);
+}
+
+.post h3 {
+    position: absolute;
+    top: 19%;
+    left: 7%;
+    color: #000000;
+}
+
+.post p {
+    position: absolute;
+    top: 42%;
+    left: 6%;
+    width: 35%;
+    color: #000000;
+}
+
+.post img {
+    width: 55%;
+    border-radius: 15px;
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    height: 300px;
+}
+
+/* 左侧个人信息卡片 */
+.introcard {
+    z-index: 500;
+    top: 8%;
+    width: 255px;
+    height: 350px;
+    transform: translate(-62%, 8%);
+    border-radius: 10px;
+    padding: 0px;
+    /* 粘性定位 */
+    position: sticky;
+    background-color: rgba(150, 225, 255, 0.8);
+    text-align: center;
+}
+
+.introcard h3 {
+    top: 10%;
+    margin-top: 10px;
+    position: relative;
+    color: #000;
+}
+
+.introcard p {
+    top: 10%;
+    margin-top: 10px;
+    position: relative;
+    color: #000;
+}
+
+.introcard img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.introcard .btnbox {
+    top: 80%;
+    width: 100%;
+    margin-top: 10px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
+
+.introcard a {
+    margin: 10px 15px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}
+
+.btnbox a img {
+    width: 100px;
+    height: 100px;
+    top: 0%;
+    left: 100%;
+    border-radius: 3px;
+    position: absolute;
+    border: none;
+    color: white;
+    display: none;
+}
+
+.btnbox a:hover img {
+    display: block;
+}
